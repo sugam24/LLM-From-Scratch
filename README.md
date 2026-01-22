@@ -1,144 +1,243 @@
-# 📘 LLM From Scratch
+# 🤖 Building LLMs From Scratch
 
-This repository contains a complete, step-by-step implementation of building a Large Language Model (LLM) from the ground up. The project is structured as a sequence of notebooks, where each notebook introduces and implements a core concept required to understand how modern LLMs work internally.
+A comprehensive, hands-on implementation guide for understanding and building Large Language Models from first principles. This repository takes you from raw text processing to a complete GPT-style architecture through progressive, well-documented Jupyter notebooks.
 
 ---
 
-## 📂 Project Structure
+## 🎯 Overview
+
+This project demystifies the inner workings of modern Large Language Models by implementing each core component from scratch. Rather than treating LLMs as black boxes, you'll build and understand every layer - from tokenization strategies to multi-head attention mechanisms.
+
+**Perfect for:** ML practitioners, researchers, and anyone who wants to deeply understand transformer-based language models beyond surface-level tutorials.
+
+---
+
+## 🏗️ Project Structure
 
 ```
-├── 01. Data_preparation_&_sampling.ipynb
-├── 02. Vector_embedding.ipynb
-
+LLM-From-Scratch/
+│
+├── 01. Data_preparation_&_sampling.ipynb    # Text → Tensors pipeline
+├── 02. Vector_embedding.ipynb                # Semantic embeddings
+├── 03. Attention_mechanism.ipynb             # Self-attention & multi-head
+├── 04. LLM_architecture(GPT).ipynb          # Complete GPT model
+│
+└── README.md                                 # You are here
 ```
 
-Each notebook builds on concepts introduced in the previous one.
+---
+
+## ✨ What You'll Learn
+
+- **Text Processing Pipeline**: Tokenization strategies, vocabulary construction, and BPE encoding
+- **Embedding Techniques**: Token embeddings, positional encodings, and semantic vector spaces
+- **Attention Mechanisms**: Self-attention, multi-head attention, and causal masking
+- **Transformer Architecture**: Complete GPT-style model implementation with all components
+- **Modern Best Practices**: Real-world techniques used in production LLMs
 
 ---
 
-## 📘 01. Data_preparation_&_sampling.ipynb
+## 📚 Curriculum
 
-This notebook focuses on transforming raw text into structured numerical data that can be used as input for language models.
+### [01. Data Preparation & Sampling](01.%20Data_preparation_%26_sampling.ipynb)
 
-### Topics Covered
+**Foundation: From Text to Tensors**
 
-### 1. Loading and Inspecting Raw Text
-- Loads a short story (*The Verdict* by Edith Wharton).
-- Reads and inspects raw text length and structure.
-- Demonstrates how real-world datasets are ingested.
+Build a complete data processing pipeline for language models:
 
----
+- Custom tokenization using regex patterns
+- Vocabulary construction and token mapping
+- SimpleTokenizer implementation (V1 & V2)
+- Byte Pair Encoding (BPE) with GPT-2's `tiktoken`
+- Sliding window data generation for next-token prediction
+- PyTorch Dataset and DataLoader implementation
+- Token and positional embeddings
 
-### 2. Tokenization from Scratch
-- Implements tokenization using Python regular expressions.
-- Splits text into:
-  - Words
-  - Punctuation
-  - Special symbols
-- Explains why tokenization design matters for language models.
+**Key Outputs:** Production-ready data loaders and embedding layers
 
 ---
 
-### 3. Vocabulary Construction
-- Extracts all unique tokens from the dataset.
-- Builds a token-to-ID mapping.
-- Creates an inverse ID-to-token mapping.
-- Calculates vocabulary size.
+### [02. Vector Embeddings](02.%20Vector_embedding.ipynb)
+
+**Understanding Semantic Spaces**
+
+Explore pretrained embeddings and semantic relationships:
+
+- Loading and using Google's Word2Vec (300D)
+- Computing cosine similarity between words
+- Vector arithmetic for analogies (_king - man + woman ≈ queen_)
+- Distance-based semantic analysis
+- Understanding embedding geometry
+
+**Key Outputs:** Intuition for how meaning is encoded in vector spaces
 
 ---
 
-### 4. Custom Tokenizer Implementations
+### [03. Attention Mechanism](03.%20Attention_mechanism.ipynb)
 
-#### SimpleTokenizerV1
-- Converts text to token IDs.
-- Converts token IDs back to text.
-- Fails on unseen words (out-of-vocabulary problem).
+**The Core of Modern LLMs**
 
-#### SimpleTokenizerV2
-- Introduces special tokens:
-  - `<|unk|>` for unknown words
-  - `<|endoftext|>` for document boundaries
-- Handles unseen tokens safely.
-- Demonstrates why special tokens are necessary in real LLMs.
+Implement the attention mechanism that powers transformers:
 
----
+- Self-attention from scratch
+- Query, Key, Value projections
+- Scaled dot-product attention
+- Multi-head attention architecture
+- Causal masking for autoregressive generation
+- Attention weight visualization
 
-### 5. Limitations of Word-Level Tokenization
-- Shows failure cases for unseen words.
-- Motivates the need for subword tokenization techniques.
+**Key Outputs:** Complete multi-head attention implementation
 
 ---
 
-### 6. Byte Pair Encoding (BPE) with GPT-2 Tokenizer
-- Uses OpenAI’s `tiktoken` tokenizer.
-- Demonstrates:
-  - Encoding text into token IDs
-  - Decoding tokens back into text
-  - Handling unseen and compound words
-- Explains why GPT-style tokenization does not require `<unk>` tokens.
+### [04. LLM Architecture (GPT)](04.%20LLM_architecture%28GPT%29.ipynb)
+
+**Building a Complete Language Model**
+
+Assemble all components into a working GPT-style model:
+
+- Transformer blocks with attention and feedforward layers
+- Layer normalization and residual connections
+- Complete GPT architecture
+- Model initialization and configuration
+- Forward pass implementation
+- Understanding model capacity and scaling
+
+**Key Outputs:** Fully functional GPT model ready for training
 
 ---
 
-### 7. Training Data Generation (Sliding Window)
-- Converts tokenized text into `(input, target)` pairs.
-- Uses a sliding window approach.
-- Prepares sequences suitable for next-token prediction tasks.
+## 🚀 Getting Started
+
+### Prerequisites
+
+```bash
+Python 3.8+
+PyTorch 1.12+
+NumPy
+Jupyter Notebook
+tiktoken
+gensim
+matplotlib
+```
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/sugam24/LLM-From-Scratch.git
+cd LLM-From-Scratch
+
+# Install dependencies
+pip install torch numpy jupyter tiktoken gensim matplotlib
+
+# Launch Jupyter
+jupyter notebook
+```
+
+### Usage
+
+Navigate through the notebooks sequentially (01 → 04). Each notebook is self-contained but builds conceptually on previous ones:
+
+```bash
+# Start with notebook 01
+jupyter notebook "01. Data_preparation_&_sampling.ipynb"
+```
+
+Run all cells in order to see the implementations and outputs. Code is heavily commented for clarity.
 
 ---
 
-### 8. Dataset and DataLoader Construction
-- Implements a custom PyTorch `Dataset`.
-- Uses `DataLoader` for batching and iteration.
-- Supports configurable sequence length and stride.
+## Learning Path
+
+**Beginner Track (4-6 hours)**
+
+- Focus on understanding concepts
+- Run all cells and observe outputs
+- Modify hyperparameters to see effects
+
+**Intermediate Track (8-12 hours)**
+
+- Study the implementation details
+- Experiment with architecture variations
+- Implement additional features (dropout, different attention patterns)
+
+**Advanced Track (15+ hours)**
+
+- Train the model on custom datasets
+- Implement advanced techniques (flash attention, sparse attention)
+- Optimize for production deployment
 
 ---
 
-### 9. Token Embeddings
-- Creates token embeddings using `torch.nn.Embedding`.
-- Maps token IDs to dense vector representations.
+## 🔑 Key Concepts Covered
+
+| Concept      | Notebook | Description                                |
+| ------------ | -------- | ------------------------------------------ |
+| Tokenization | 01       | Word-level, BPE, special tokens            |
+| Embeddings   | 01, 02   | Token, positional, pretrained (Word2Vec)   |
+| Attention    | 03       | Self-attention, multi-head, causal masking |
+| Architecture | 04       | Transformer blocks, GPT model, layer norm  |
+| Data Loading | 01       | PyTorch Dataset/DataLoader, batching       |
 
 ---
 
-### 10. Positional Embeddings
-- Adds positional information to token embeddings.
-- Combines token and positional embeddings to form final model input.
+## 🛠️ Technologies Used
+
+- **PyTorch**: Deep learning framework
+- **tiktoken**: OpenAI's fast BPE tokenizer
+- **gensim**: Word2Vec pretrained embeddings
+- **NumPy**: Numerical operations
+- **Jupyter**: Interactive development
 
 ---
 
-## 📘 02. Vector_embedding.ipynb
+## 🤝 Contributing
 
-This notebook explores **pretrained word embeddings** and semantic relationships using Word2Vec.
+Contributions are welcome! Whether it's fixing bugs, improving documentation, or adding new features:
 
----
-
-### 1. Loading Pretrained Word2Vec Model
-- Uses Google’s Word2Vec (300-dimensional) embeddings via `gensim`.
-- Loads a large pretrained semantic space.
-
----
-
-### 2. Inspecting Word Vectors
-- Examines vector values for individual words.
-- Understands embedding dimensionality and structure.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/improvement`)
+3. Commit your changes (`git commit -m 'Add some improvement'`)
+4. Push to the branch (`git push origin feature/improvement`)
+5. Open a Pull Request
 
 ---
 
-### 3. Semantic Similarity
-- Computes cosine similarity between word pairs.
-- Demonstrates semantic closeness (e.g., *king–queen*, *boy–girl*).
+## 📖 Additional Resources
+
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762) - Original Transformer paper
+- [Language Models are Unsupervised Multitask Learners](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) - GPT-2 paper
+- [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/) - Visual guide
+- [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT) - Minimal GPT implementation
 
 ---
 
-### 4. Vector Arithmetic
-- Performs analogy reasoning:
-  - `king - man + woman ≈ queen`
-- Shows how meaning is encoded geometrically.
+## 📜 License
+
+This project is open source and available under the MIT License.
 
 ---
 
-### 5. Distance-Based Semantic Comparison
-- Measures distance between related and unrelated words.
-- Demonstrates how embeddings encode semantic relationships.
+## 👤 Author
+
+**Sugam**  
+GitHub: [@sugam24](https://github.com/sugam24)
 
 ---
 
+## ⭐ Acknowledgments
+
+- Inspired by modern LLM research and educational content
+- Built on the foundations of PyTorch and the open-source ML community
+- Special thanks to all contributors and learners who provide feedback
+
+---
+
+<div align="center">
+
+**If you found this helpful, please consider giving it a ⭐!**
+
+_Built with ❤️ for the ML community_
+
+</div>
