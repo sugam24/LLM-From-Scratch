@@ -367,12 +367,15 @@ Contributions are welcome! Whether it's fixing bugs, improving documentation, or
 
 ## 📖 Additional Resources
 
-### 📚 Primary Reference
+### 📚 Primary References
 
 This project is heavily inspired by and based on:
 
 - **[Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch)** by **Sebastian Raschka** - The primary resource for this repository. Most of the code and concepts are adapted from this excellent book. Highly recommended for anyone wanting to deeply understand LLMs!
-- [Sebastian Raschka's GitHub](https://github.com/rasbt) - Author's GitHub with additional resources
+  - [Sebastian Raschka's GitHub](https://github.com/rasbt) - Author's GitHub with additional resources
+
+- **[Building LLMs from Scratch - Video Lectures](https://www.youtube.com/playlist?list=PLPTV0NXA_ZSgsLAr8YCgCwhPIJNNtexWu)** by **Dr. Raj Abhijit Dandekar** (Vizuara) - Excellent video lecture series that complements the book perfectly. Great for visual learners!
+  - [Dr. Raj Abhijit Dandekar's LinkedIn](https://linkedin.com/in/raj-abhijit-dandekar-67a33118a)
 
 ### 📄 Research Papers & Guides
 
@@ -399,6 +402,7 @@ GitHub: [@sugam24](https://github.com/sugam24)
 ## ⭐ Acknowledgments
 
 - **Sebastian Raschka** - This project is based on his book _"Build a Large Language Model (From Scratch)"_. His clear explanations and well-structured code made understanding LLMs accessible. Most of the implementations in this repository are adapted from his work.
+- **Dr. Raj Abhijit Dandekar** - His YouTube lecture series on the [Vizuara channel](https://www.youtube.com/playlist?list=PLPTV0NXA_ZSgsLAr8YCgCwhPIJNNtexWu) provided invaluable visual explanations that helped solidify the concepts from the book.
 - Inspired by modern LLM research and educational content
 - Built on the foundations of PyTorch and the open-source ML community
 - Special thanks to all contributors and learners who provide feedback
