@@ -1,0 +1,85 @@
+# =========================
+# GPT-2 Model Weights
+# =========================
+# Large model files (can be re-downloaded using download_and_load_gpt2 function)
+gpt2/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# =========================
+# Virtual Environments
+# =========================
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# =========================
+# PyTorch Model Files
+# =========================
+# Temporary model saves (comment out if you want to track specific models)
+model.pth
+model_and_optimizer.pth
+*.pt
+*.pth
+*.ckpt
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =========================
+# Logs & Misc
+# =========================
+*.log
+*.tmp
+*.temp
+.cache/

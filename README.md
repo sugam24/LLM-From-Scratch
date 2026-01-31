@@ -17,12 +17,27 @@ This project demystifies the inner workings of modern Large Language Models by i
 ```
 LLM-From-Scratch/
 │
-├── 01. Data_preparation_&_sampling.ipynb    # Text → Tensors pipeline
-├── 02. Vector_embedding.ipynb                # Semantic embeddings
-├── 03. Attention_mechanism.ipynb             # Self-attention & multi-head
-├── 04. LLM_architecture(GPT).ipynb          # Complete GPT model
+├── 📓 Notebooks (Learning Path)
+│   ├── 01. Data_preparation_&_sampling.ipynb    # Text → Tensors pipeline
+│   ├── 02. Vector_embedding.ipynb               # Semantic embeddings
+│   ├── 03. Attention_mechanism.ipynb            # Self-attention & multi-head
+│   ├── 04. LLM_architecture(GPT).ipynb          # Complete GPT model
+│   ├── 05. LLM_Loss_function.ipynb              # Loss calculation & optimization
+│   ├── 06. LLM_Pretraining.ipynb                # Model training pipeline
+│   ├── 08. Understanding_GPT2_Weights.ipynb     # Exploring pretrained weights
+│   ├── 09. Model_Weights_Loading.ipynb          # Loading OpenAI GPT-2 weights
+│   └── 10. GPT2_architecture_only.ipynb         # Minimal GPT-2 architecture
 │
-└── README.md                                 # You are here
+├── 🐍 Python Scripts
+│   ├── 07. GPT-2_weights_download.py            # Download GPT-2 checkpoints
+│   └── 11. GPT-2_complete_model.py              # Complete model implementation
+│
+├── 📦 Model Weights (auto-downloaded)
+│   └── gpt2/124M/                               # GPT-2 Small pretrained weights
+│
+├── requirements.txt                             # Python dependencies
+├── .gitignore                                   # Git ignore rules
+└── README.md                                    # You are here
 ```
 
 ---
@@ -33,6 +48,7 @@ LLM-From-Scratch/
 - **Embedding Techniques**: Token embeddings, positional encodings, and semantic vector spaces
 - **Attention Mechanisms**: Self-attention, multi-head attention, and causal masking
 - **Transformer Architecture**: Complete GPT-style model implementation with all components
+- **Pretrained Weights**: Loading and using OpenAI's GPT-2 weights
 - **Modern Best Practices**: Real-world techniques used in production LLMs
 
 ---
@@ -107,88 +123,233 @@ Assemble all components into a working GPT-style model:
 
 ---
 
+### [05. LLM Loss Function](05.%20LLM_Loss_function.ipynb)
+
+**Training Objectives & Optimization**
+
+Implement loss functions and understand model training:
+
+- Cross-entropy loss for language modeling
+- Perplexity metrics
+- Loss calculation across batches
+- Text generation with trained models
+- Understanding training dynamics
+
+**Key Outputs:** Loss computation and generation pipeline
+
+---
+
+### [06. LLM Pretraining](06.%20LLM_Pretraining.ipynb)
+
+**Complete Training Pipeline**
+
+Train a GPT model from scratch:
+
+- Data loading and preprocessing
+- Training loop implementation
+- Validation and model evaluation
+- Learning rate scheduling
+- GPU/CPU device management
+- Model checkpointing and saving
+- Text generation and inference
+
+**Key Outputs:** Fully trained language model capable of text generation
+
+---
+
+### [07. GPT-2 Weights Download](07.%20GPT-2_weights_download.py)
+
+**Downloading Pretrained Weights**
+
+Python script to download OpenAI's GPT-2 model weights:
+
+- Download GPT-2 checkpoints from OpenAI
+- Support for different model sizes (124M, 355M, 774M, 1558M)
+- Progress tracking during download
+- Automatic file organization
+
+**Key Outputs:** Local copy of GPT-2 pretrained weights
+
+---
+
+### [08. Understanding GPT-2 Weights](08.%20Understanding_GPT2_Weights.ipynb)
+
+**Exploring Pretrained Model Structure**
+
+Deep dive into GPT-2's weight structure:
+
+- Loading TensorFlow checkpoints
+- Understanding weight naming conventions
+- Exploring layer-by-layer parameters
+- Comparing architecture configurations
+
+**Key Outputs:** Understanding of how pretrained weights are organized
+
+---
+
+### [09. Model Weights Loading](09.%20Model_Weights_Loading.ipynb)
+
+**Loading OpenAI GPT-2 Weights**
+
+Complete pipeline for using pretrained weights:
+
+- Converting TensorFlow weights to PyTorch
+- Mapping OpenAI weights to our architecture
+- Loading weights into custom GPT model
+- Text generation with pretrained model
+- Saving and loading PyTorch checkpoints
+
+**Key Outputs:** Working GPT-2 model with pretrained weights
+
+---
+
+### [10. GPT-2 Architecture Only](10.%20GPT2_architecture_only.ipynb)
+
+**Minimal GPT-2 Implementation**
+
+Clean, minimal GPT-2 Small architecture:
+
+- Complete model in ~100 lines of code
+- Well-commented implementation
+- Model verification and testing
+- Parameter counting (124M)
+
+**Key Outputs:** Reference implementation for GPT-2 architecture
+
+---
+
+### [11. GPT-2 Complete Model](11.%20GPT-2_complete_model.py)
+
+**Production-Ready Implementation**
+
+Complete GPT-2 model as a standalone Python module:
+
+- All architecture components
+- Ready for import and use
+- Clean, modular code structure
+
+**Key Outputs:** Importable GPT-2 model module
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-```bash
-Python 3.8+
-PyTorch 1.12+
-NumPy
-Jupyter Notebook
-tiktoken
-gensim
-matplotlib
-```
+- Python 3.8 or higher
+- pip (Python package installer)
+- Virtual environment (recommended)
+- 4GB+ RAM (8GB+ recommended for training)
+- GPU optional (CUDA-compatible for faster training)
 
 ### Installation
+
+#### Option 1: Using pip with requirements.txt (Recommended)
 
 ```bash
 # Clone the repository
 git clone https://github.com/sugam24/LLM-From-Scratch.git
 cd LLM-From-Scratch
 
-# Install dependencies
-pip install torch numpy jupyter tiktoken gensim matplotlib
+# Create a virtual environment (recommended)
+python -m venv .venv
 
-# Launch Jupyter
-jupyter notebook
+# Activate virtual environment
+# On Linux/Mac:
+source .venv/bin/activate
+# On Windows:
+# .venv\Scripts\activate
+
+# Install all dependencies
+pip install -r requirements.txt
+```
+
+#### Option 2: Manual Installation
+
+```bash
+# Install PyTorch (visit pytorch.org for your specific system)
+pip install torch torchvision torchaudio
+
+# Install other dependencies
+pip install tiktoken matplotlib gensim kagglehub jupyter tensorflow tqdm requests
 ```
 
 ### Usage
 
-Navigate through the notebooks sequentially (01 → 04). Each notebook is self-contained but builds conceptually on previous ones:
+Navigate through the notebooks sequentially (01 → 06). Each notebook is self-contained but builds conceptually on previous ones:
 
 ```bash
-# Start with notebook 01
-jupyter notebook "01. Data_preparation_&_sampling.ipynb"
+# Launch Jupyter Notebook
+jupyter notebook
+
+# Or use VS Code with Jupyter extension (recommended)
+# Open any .ipynb file directly in VS Code
 ```
 
+**Recommended Order:**
+
+1. Start with `01. Data_preparation_&_sampling.ipynb`
+2. Continue through notebooks 01-06 in numerical order
+3. Explore pretrained weights in notebooks 07-10
+4. Run all cells sequentially within each notebook
+
 Run all cells in order to see the implementations and outputs. Code is heavily commented for clarity.
+
+> **Note:** The `gpt2/` folder containing pretrained weights is not included in the repository (too large for GitHub). Run notebook 09 or script 07 to download the weights automatically.
 
 ---
 
 ## Learning Path
 
-**Beginner Track (4-6 hours)**
+**Beginner Track (6-8 hours)**
 
 - Focus on understanding concepts
 - Run all cells and observe outputs
 - Modify hyperparameters to see effects
+- Complete notebooks 01-04
 
-**Intermediate Track (8-12 hours)**
+**Intermediate Track (12-16 hours)**
 
 - Study the implementation details
 - Experiment with architecture variations
+- Train the model (notebooks 05-06)
+- Load and use pretrained weights (notebooks 08-09)
 - Implement additional features (dropout, different attention patterns)
 
-**Advanced Track (15+ hours)**
+**Advanced Track (20+ hours)**
 
 - Train the model on custom datasets
 - Implement advanced techniques (flash attention, sparse attention)
+- Fine-tune pretrained GPT-2 on domain-specific data
 - Optimize for production deployment
 
 ---
 
 ## 🔑 Key Concepts Covered
 
-| Concept      | Notebook | Description                                |
-| ------------ | -------- | ------------------------------------------ |
-| Tokenization | 01       | Word-level, BPE, special tokens            |
-| Embeddings   | 01, 02   | Token, positional, pretrained (Word2Vec)   |
-| Attention    | 03       | Self-attention, multi-head, causal masking |
-| Architecture | 04       | Transformer blocks, GPT model, layer norm  |
-| Data Loading | 01       | PyTorch Dataset/DataLoader, batching       |
+| Concept            | Notebook | Description                                |
+| ------------------ | -------- | ------------------------------------------ |
+| Tokenization       | 01       | Word-level, BPE, special tokens            |
+| Embeddings         | 02       | Token, positional, pretrained (Word2Vec)   |
+| Attention          | 03       | Self-attention, multi-head, causal masking |
+| Architecture       | 04, 10   | Transformer blocks, GPT model, layer norm  |
+| Loss & Metrics     | 05       | Cross-entropy, perplexity, generation      |
+| Training           | 06       | Optimization loop, validation, checkpoints |
+| Pretrained Weights | 08, 09   | Loading OpenAI GPT-2 weights               |
+| Data Loading       | 01       | PyTorch Dataset/DataLoader, batching       |
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
-- **PyTorch**: Deep learning framework
-- **tiktoken**: OpenAI's fast BPE tokenizer
+- **PyTorch**: Deep learning framework for model implementation
+- **TensorFlow**: Loading OpenAI's pretrained GPT-2 checkpoints
+- **tiktoken**: OpenAI's fast BPE tokenizer for GPT-style encoding
 - **gensim**: Word2Vec pretrained embeddings
+- **matplotlib**: Visualization for loss curves and attention patterns
+- **kagglehub**: Dataset downloading and management
 - **NumPy**: Numerical operations
-- **Jupyter**: Interactive development
+- **Jupyter**: Interactive notebook development
 
 ---
 
@@ -205,6 +366,15 @@ Contributions are welcome! Whether it's fixing bugs, improving documentation, or
 ---
 
 ## 📖 Additional Resources
+
+### 📚 Primary Reference
+
+This project is heavily inspired by and based on:
+
+- **[Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch)** by **Sebastian Raschka** - The primary resource for this repository. Most of the code and concepts are adapted from this excellent book. Highly recommended for anyone wanting to deeply understand LLMs!
+- [Sebastian Raschka's GitHub](https://github.com/rasbt) - Author's GitHub with additional resources
+
+### 📄 Research Papers & Guides
 
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762) - Original Transformer paper
 - [Language Models are Unsupervised Multitask Learners](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) - GPT-2 paper
@@ -228,6 +398,7 @@ GitHub: [@sugam24](https://github.com/sugam24)
 
 ## ⭐ Acknowledgments
 
+- **Sebastian Raschka** - This project is based on his book _"Build a Large Language Model (From Scratch)"_. His clear explanations and well-structured code made understanding LLMs accessible. Most of the implementations in this repository are adapted from his work.
 - Inspired by modern LLM research and educational content
 - Built on the foundations of PyTorch and the open-source ML community
 - Special thanks to all contributors and learners who provide feedback
